@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="about.css">
+    <title>FLAMES (Love Calculator)</title>
+    <link rel="icon" type="image/png" href="./burning_heart_favicon.png">
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <ul class="nav_links">
+          <div>
+            <li>
+              <a href="home.html"> <img src="./burning_heart_favicon.png" alt="LOGO"> </a>
+            </li>
+            <li><a href="home.html">HOME</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="disclaimer.html">DISCLAIMER</a></li>
+            <li><a href="#" id="random-link">PLAY A GAME!</a></li>
+          </div>
+          <li><a href="takeATest.html">TAKE A TEST!</a></li>
+        </ul>
+      </nav>
+      <section class="section_container">
+        <h1>ENEMY</h1>
+        <div class="socials">
+          <!-- <a href="./email.html"><i class="ri-mail-send-line"></i></a> -->
+        </div>
+      </section>
+    </div>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="about.js"></script>
+    <script>
+      const links = [
+        { url: "./memoryGame/index.html", name: "Link 1" },
+        { url: "./pingPongGame/index.html", name: "Link 2" },
+        { url: "./tikTakToeGame/index.html", name: "Link 3" }
+      ];
+    
+      document.getElementById("random-link").addEventListener("click", function() {
+        const randomIndex = Math.floor(Math.random() * links.length);
+        const randomLink = links[randomIndex];
+        window.location.href = randomLink.url;
+      });
+    </script>
+  </body>
+</html>

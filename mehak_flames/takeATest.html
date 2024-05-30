@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="takeATest.css">
+    <title>FLAMES (Love Calculator)</title>
+    <link rel="icon" type="image/png" href="./burning_heart_favicon.png">
+  </head>
+  <body>
+    <div class="container">
+      <nav>
+        <ul class="nav_links">
+          <div>
+            <li>
+              <a href="home.html"> <img src="./burning_heart_favicon.png" alt="LOGO"> </a>
+            </li>
+            <li><a href="home.html">HOME</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="disclaimer.html">DISCLAIMER</a></li>
+            <li><a href="#" id="random-link">PLAY A GAME!</a></li>
+          </div>
+          <li><a href="takeATest.html">TAKE A TEST!</a></li>
+        </ul>
+      </nav>
+      <section class="section_container"></section>
+      <div class="content">
+        <h1>LOVE CALCULATOR</h1>
+        <br> <br>
+        <div class="inputarea">
+            <input type="text" placeholder="Your Name (ALL CAPS)" id="NameOne" onfocus="this.value=''" required>
+            <input type="text" placeholder="Partner Name (ALL CAPS)" id="NameTwo" onfocus="this.value=''" required>
+        </div>
+        <br>
+        <div class="calculate">
+            <a href="#" onclick="love()">TEST IT!</a>
+        </div>
+      </div>
+    </div>
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="takeATest.js"></script>
+    <script>
+      function love(){
+        function flame(name1, name2) {
+  let count = 0;
+  let commonChars = {};
+
+  // Count common characters
+  for (let i = 0; i < name1.length; i++) {
+    let char = name1[i];
+    if (name2.includes(char)) {
+      commonChars[char] = (commonChars[char] || 0) + 1;
+    }
+  }
+
+  // Remove common characters from both names
+  let name1Array = name1.split('');
+  let name2Array = name2.split('');
+  for (let char in commonChars) {
+    for (let i = 0; i < commonChars[char]; i++) {
+      let index = name1Array.indexOf(char);
+      if (index !== -1) {
+        name1Array.splice(index, 1);
+      }
+      index = name2Array.indexOf(char);
+      if (index !== -1) {
+        name2Array.splice(index, 1);
+      }
+    }
+  }
+
+  // Count remaining characters
+  count = name1Array.length + name2Array.length;
+
+  // FLAMES game logic
+  let flames = ['F', 'L', 'A', 'M', 'E', 'S'];
+  let resultIndex = count % flames.length;
+  let result = flames[resultIndex];
+
+  // Open corresponding HTML file
+  switch (result) {
+    case 'F':
+      window.open('friends.html', "_self");
+      break;
+    case 'L':
+      window.open('love.html', "_self");
+      break;
+    case 'A':
+      window.open('affection.html', "_self");
+      break;
+    case 'M':
+      window.open('marry.html', "_self");
+      break;
+    case 'E':
+      window.open('enemy.html', "_self");
+      break;
+    case 'S':
+      window.open('siblings.html', "_self");
+      break;
+  }
+}
+
+// Fetch names from input fields
+let nameOne = document.getElementById('NameOne').value;
+let nameTwo = document.getElementById('NameTwo').value;
+
+// Call the FLAMES game function
+flame(nameOne, nameTwo);
+      }
+    </script>
+<script>
+  const links = [
+    { url: "./memoryGame/index.html", name: "Link 1" },
+    { url: "./pingPongGame/index.html", name: "Link 2" },
+    { url: "./tikTakToeGame/index.html", name: "Link 3" }
+  ];
+
+  document.getElementById("random-link").addEventListener("click", function() {
+    const randomIndex = Math.floor(Math.random() * links.length);
+    const randomLink = links[randomIndex];
+    window.location.href = randomLink.url;
+  });
+</script>
+  </body>
+</html>
